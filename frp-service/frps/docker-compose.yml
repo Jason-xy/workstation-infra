@@ -1,0 +1,9 @@
+version: "3.9"
+
+services:
+  frps:
+    image: snowdreamtech/frps
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - ./frps.toml:/etc/frp/frps.toml
