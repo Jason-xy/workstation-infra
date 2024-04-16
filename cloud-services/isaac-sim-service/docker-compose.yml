@@ -1,0 +1,22 @@
+version: "3.9"
+
+services:
+  isaac-sim-service:
+    image: nvcr.io/nvidia/isaac-sim:2023.1.1
+    restart: unless-stopped
+    network_mode: host
+    environment:
+      - ACCEPT_EULA=Y
+      - PRIVACY_CONSENT=Y
+      - NVIDIA_VISIBLE_DEVICES=all
+    volumes:
+      - /mnt/pve/PVE/docker/isaac-sim/cache/kit:/isaac-sim/kit/cache:rw
+      - /mnt/pve/PVE/docker/isaac-sim/cache/ov:/root/.cache/ov:rw
+      - /mnt/pve/PVE/docker/isaac-sim/cache/pip:/root/.cache/pip:rw
+      - /mnt/pve/PVE/docker/isaac-sim/cache/glcache:/root/.cache/nvidia/GLCache:rw
+      - /mnt/pve/PVE/docker/isaac-sim/cache/computecache:/root/.nv/ComputeCache:rw
+      - /mnt/pve/PVE/docker/isaac-sim/logs:/root/.nvidia-omniverse/logs:rw
+      - /mnt/pve/PVE/docker/isaac-sim/data:/root/.local/share/ov/data:rw
+      - /mnt/pve/PVE/docker/isaac-sim/documents:/root/Documents:rw
+    runtime: nvidia
+    entrypoint: ["bash", "-c", "./runheadless.native.sh -v"]
