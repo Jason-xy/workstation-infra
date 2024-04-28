@@ -27,11 +27,12 @@ resource "coder_agent" "main" {
   os             = "linux"
   startup_script = <<-EOT
     set -e
-
+    # start docker
+    sudo dockerd &
     # install and start code-server
     curl -fsSL https://code-server.dev/install.sh | sh -s -- --method=standalone --prefix=/tmp/code-server --version 4.19.1
     /tmp/code-server/bin/code-server --auth none --port 13337 >/tmp/code-server.log 2>&1 &
-    sudo dockerd &
+    sudo chmod 666 /var/run/docker.sock
   EOT
 
   # These environment variables allow you to make Git commits right away after creating a
