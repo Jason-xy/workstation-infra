@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+    zfile:
+        container_name: zfile
+        restart: unless-stopped
+        ports:
+            - '6080:8080'
+        volumes:
+            - '/zfile/db:/root/.zfile-v4/db'
+            - '/zfile/logs:/root/.zfile-v4/logs'
+            - '/zfile/file:/data/file'
+        image: zhaojun1998/zfile

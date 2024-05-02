@@ -8,6 +8,7 @@ RUN apt-get update && \
 	sudo \
 	vim \
 	wget \
+	bash-completion \
 	software-properties-common \
 	docker.io && \
 	rm -rf /var/lib/apt/lists/*

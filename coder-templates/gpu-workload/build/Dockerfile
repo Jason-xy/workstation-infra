@@ -8,6 +8,7 @@ RUN apt-get update && \
 	sudo \
 	vim \
 	wget \
+	bash-completion \
 	software-properties-common && \
 	rm -rf /var/lib/apt/lists/*
 
