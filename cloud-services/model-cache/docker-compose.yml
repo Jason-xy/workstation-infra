@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  modelcache:
+    image: modelcache:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 5000:5000
+    volumes:
+      - ./data:/data
+    container_name: modelcache
+    tty: true
+    restart: unless-stopped

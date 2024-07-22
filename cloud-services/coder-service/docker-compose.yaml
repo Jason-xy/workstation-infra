@@ -13,7 +13,7 @@ services:
       # You'll need to set CODER_ACCESS_URL to an IP or domain
       # that workspaces can reach. This cannot be localhost
       # or 127.0.0.1 for non-Docker templates!
-      CODER_ACCESS_URL: "http://code.jason-xy.online:7080"
+      CODER_ACCESS_URL: "http://code.jason-ws.xyz"
       # CODER_BLOCK_DIRECT: "true"
       # CODER_DERP_FORCE_WEBSOCKETS: "true"
       # CODER_REDIRECT_TO_ACCESS_URL: "true"

@@ -1,0 +1,8 @@
+version: "3.9"
+
+services:
+  cloudflare-tunnel:
+    image: cloudflare/cloudflared:latest
+    restart: unless-stopped
+    network_mode: host
+    command: tunnel --no-autoupdate run --token eyJhIjoiOGNmMDZmMmU5MmFmMGEyYTc2YjIzNzA5YTk0ZGIwNGQiLCJ0IjoiYjY1NTUzZjctMDQ0NS00ZTYwLThhYTktYWMzZmExM2Q5MjA1IiwicyI6Ik1tTTFaVEkyTmpJdE1ESTNPUzAwWVRZeUxXSXhPV1V0TjJGak5UQmtORGsyWldSaiJ9
