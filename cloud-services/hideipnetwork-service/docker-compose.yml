@@ -1,0 +1,28 @@
+services:
+
+  hnet_mongodb:
+    image: mongo:latest
+    container_name: hnet_mongodb
+    restart: always
+    environment:
+      - TZ=Asia/Shanghai
+      - MONGO_INITDB_DATABASE=hnet
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=admin
+    ports:
+      - "27017:27017"
+
+  hnet_app:
+    image: jesmora/hnet-server
+    ports:
+      - "56559:56559"
+    depends_on:
+      - hnet_mongodb
+    environment:
+      HOST: 0.0.0.0
+      SECRET: "hnet-jesmora"
+      HNET_USER: "Jesmora"
+      HNET_PWD: "hnet-jesmora"
+      REDIRECT_HOST: "www.google.com"
+      MONGDB_CONNECTION: "mongodb://admin:admin@hnet_mongodb:27017/hnet"
+      MODO: "normal"

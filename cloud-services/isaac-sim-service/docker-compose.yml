@@ -12,14 +12,16 @@ services:
       - ACCEPT_EULA=Y
       - PRIVACY_CONSENT=Y
       - NVIDIA_VISIBLE_DEVICES=all
+      - DISPLAY=:0
     volumes:
-      - /home/jason/Service/omniverse/cache/kit:/isaac-sim/kit/cache:rw
-      - /home/jason/Service/omniverse/cache/ov:/root/.cache/ov:rw
-      - /home/jason/Service/omniverse/cache/pip:/root/.cache/pip:rw
-      - /home/jason/Service/omniverse/cache/glcache:/root/.cache/nvidia/GLCache:rw
-      - /home/jason/Service/omniverse/cache/computecache:/root/.nv/ComputeCache:rw
-      - /home/jason/Service/omniverse/logs:/root/.nvidia-omniverse/logs:rw
-      - /home/jason/Service/omniverse/data:/root/.local/share/ov/data:rw
-      - /home/jason/Service/omniverse/documents:/root/Documents:rw
+      - /home/dji/service/isaac-sim/cache/kit:/isaac-sim/kit/cache:rw
+      - /home/dji/service/isaac-sim/cache/ov:/root/.cache/ov:rw
+      - /home/dji/service/isaac-sim/cache/pip:/root/.cache/pip:rw
+      - /home/dji/service/isaac-sim/cache/glcache:/root/.cache/nvidia/GLCache:rw
+      - /home/dji/service/isaac-sim/cache/computecache:/root/.nv/ComputeCache:rw
+      - /home/dji/service/isaac-sim/logs:/root/.nvidia-omniverse/logs:rw
+      - /home/dji/service/isaac-sim/data:/root/.local/share/ov/data:rw
+      - /home/dji/service/isaac-sim/documents:/root/Documents:rw
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
     runtime: nvidia
     entrypoint: ["bash", "-c", "source /opt/ros/humble/setup.bash && ./runheadless.native.sh -v"]

@@ -3,7 +3,7 @@ services:
   coder:
     # This MUST be stable for our documentation and
     # other automations.
-    image: ghcr.io/coder/coder:v2.10.2
+    image: ghcr.io/coder/coder
     restart: unless-stopped
     ports:
       - "7080:7080"
@@ -13,7 +13,7 @@ services:
       # You'll need to set CODER_ACCESS_URL to an IP or domain
       # that workspaces can reach. This cannot be localhost
       # or 127.0.0.1 for non-Docker templates!
-      CODER_ACCESS_URL: "http://code.jason-ws.xyz"
+      CODER_ACCESS_URL: "https://code-itx.jason-ws.xyz"
       # CODER_BLOCK_DIRECT: "true"
       # CODER_DERP_FORCE_WEBSOCKETS: "true"
       # CODER_REDIRECT_TO_ACCESS_URL: "true"
@@ -22,7 +22,7 @@ services:
     # lines and set the group ID to one that has write
     # permissions on the docker socket.
     group_add:
-     - "116" # docker group on host
+     - "138" # docker group on host
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     depends_on:
@@ -48,11 +48,5 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
-  frpc:
-    image: snowdreamtech/frpc
-    restart: unless-stopped
-    network_mode: host
-    volumes:
-      - ./frpc.toml:/etc/frp/frpc.toml
 volumes:
   coder_data:
