@@ -1,0 +1,1 @@
+/opt/jfrog/artifactory/app/third-party/java/bin/java -jar /opt/jfrog/artifactory/var/ArtifactoryKeygen.jar gen

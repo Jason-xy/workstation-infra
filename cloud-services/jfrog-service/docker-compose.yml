@@ -1,0 +1,18 @@
+version: '3.8'
+services:
+  artifactory-pro:
+    image: releases-docker.jfrog.io/jfrog/artifactory-pro:7.59.11
+    container_name: artifactory-pro
+    restart: always
+    ports:
+      - 8081:8081
+      - 8082:8082
+    environment:
+      - EXTRA_JAVA_OPTIONS=-javaagent:/opt/jfrog/artifactory/var/ArtifactoryAgent.jar
+    volumes:
+      - artifactory-pro-data:/var
+      - ./tools/ArtifactoryAgent.jar:/opt/jfrog/artifactory/var/ArtifactoryAgent.jar
+      - ./tools/ArtifactoryKeygen.jar:/opt/jfrog/artifactory/var/ArtifactoryKeygen.jar
+
+volumes:
+  artifactory-pro-data:
