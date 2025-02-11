@@ -7,5 +7,5 @@ docker exec sharelatex /bin/bash -ce "cd /overleaf/services/web && node modules/
 ## Install texlive packages
 
 ```bash
-docker exec sharelatex /bin/bash -ce "apt-get update && apt-get install texlive-full -y"
+docker exec sharelatex /bin/bash -ce "apt-get update && apt-get install texlive-full -y && tlmgr install scheme-full"
 ```
