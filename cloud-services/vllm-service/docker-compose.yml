@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  vllm-server:
+    image: vllm/vllm-openai:latest
+    runtime: nvidia
+    volumes:
+      - ~/.cache/huggingface:/root/.cache/huggingface
+    environment:
+      HUGGING_FACE_HUB_TOKEN:
+    ports:
+      - "12222:8000"
+    ipc: host
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              capabilities: [gpu]
+              device_ids: ['1', '2', '3', '4']
+    command: --model deepseek-ai/DeepSeek-R1-Distill-Qwen-32B --dtype=half --enable-reasoning --reasoning-parser deepseek_r1 --tensor-parallel-size 4 --max-model-len 65535 --enforce-eager
